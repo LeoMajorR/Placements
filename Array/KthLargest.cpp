@@ -7,6 +7,16 @@ using namespace std;
  * Space Complexity: O(1)
  */
 
+template <typename T>
+std::ostream &operator<<(std::ostream &os, const std::vector<T> &vec)
+{
+    for (auto elem : vec)
+    {
+        os << elem << " ";
+    }
+    return os;
+}
+
 int partition(vector<int> &arr, int low, int high)
 {
     int pivot = arr[low];
@@ -14,14 +24,19 @@ int partition(vector<int> &arr, int low, int high)
     int l = low + 1;
     while (l <= h)
     {
+        // if pivot is greater than current element, move pivot to right
         if (arr[l] < pivot && arr[h] > pivot)
         {
             swap(arr[l], arr[h]);
             l++;
             h--;
         }
+
+        // if pivot is less than current element, move current index to right
         else if (arr[l] >= pivot)
             l++;
+
+        // if pivot is greater than current element, move current index to left
         else
             h--;
     }
@@ -36,7 +51,7 @@ int kthLargest(vector<int> &arr, int k)
     int kth;
     while (true)
     {
-        int ind = partition(arr, l, r);
+        int ind = partition(arr, l, r); // Arranging elements in descending order and returning the index of the kth largest element
         if (ind == k - 1)
         {
             kth = arr[ind];
