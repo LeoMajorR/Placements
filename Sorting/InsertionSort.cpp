@@ -50,4 +50,6 @@ int main()
     {
         cout << arr[i] << " ";
     }
+    vector<int> arr2 = {12, 10, 14, 4, 1, 8};
+    insertionSort(arr2, true);
 }
