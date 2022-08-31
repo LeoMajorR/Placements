@@ -9,3 +9,11 @@
 
 *.exe
 *.out
+temp.c
+.gitignore
+.vscode/c_cpp_properties.json
+.gitignore
+.vscode/tasks.json
+.vscode/launch.json
+temp.cpp
+temp2.cpp
