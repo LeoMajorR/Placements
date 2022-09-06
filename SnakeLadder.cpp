@@ -17,6 +17,16 @@ int playGame(vector<pair<int, int>> snakes, vector<pair<int, int>> ladders, vect
     for (int i = 0; i < m; i++)
         board[ladders[i].first] = {ladders[i].second};
 
+    // display board in 10x10 matrix
+    for (int i = 0; i < 10; i++)
+    {
+        for (int j = 0; j < 10; j++)
+        {
+            cout << board[i * 10 + j] << " ";
+        }
+        cout << endl;
+    }
+
     // take two pointer to keep track of current position of both players
     int p1_pos = 0;
     int p2_pos = 0;
@@ -46,6 +56,9 @@ int playGame(vector<pair<int, int>> snakes, vector<pair<int, int>> ladders, vect
         // check if player 2 is on a winning position
         if (p2_pos == 100)
             return 2;
+
+        // display position of both players
+        cout << "Player 1: " << p1_pos << " Player 2: " << p2_pos << endl;
     }
     // compare position of both players and return the winner
     if (p1_pos > p2_pos)
