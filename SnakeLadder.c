@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int board[100] = {0};
+int board[101] = {0};
 
 // struct for saving start and end point of each snake and ladder
 struct snakeLadder
@@ -21,37 +21,49 @@ struct Winner getWinner(int p1[], int p2[], int m)
 
     // initialize both players position to 0
     int p1_pos, p2_pos;
-    p1_pos = p2_pos = 0;
+    p1_pos = p2_pos = 1;
 
     for (int i = 0; i < m / 2; i++)
     {
         // move player 1
         p1_pos += p1[i];
-        // check if player 1 is on a snake or ladder
-        if (board[p1_pos] > 0)
-            p1_pos = board[p1_pos];
-        else if (board[p1_pos] < 0)
-            p1_pos = -board[p1_pos];
+        // while snake or ladder is present
+        while (board[p1_pos] != 0)
+        {
+            // snake
+            if (board[p1_pos] < 0)
+                p1_pos = -board[p1_pos];
+            // ladder
+            else
+                p1_pos = board[p1_pos];
+        }
+
         // check if player 1 is on the last position
-        if (p1_pos >= 99)
+        if (p1_pos >= 100)
         {
             winner.player = 1;
-            winner.position = p1_pos;
+            winner.position = p1_pos - 1;
             return winner;
         }
 
         // move player 2
         p2_pos += p2[i];
-        // check if player 2 is on a snake or ladder
-        if (board[p2_pos] > 0)
-            p2_pos = board[p2_pos];
-        else if (board[p2_pos] < 0)
-            p2_pos = -board[p2_pos];
+        // while snake or ladder is present
+        while (board[p2_pos] != 0)
+        {
+            // snake
+            if (board[p2_pos] < 0)
+                p2_pos = -board[p2_pos];
+            // ladder
+            else
+                p2_pos = board[p2_pos];
+        }
+
         // check if player 2 is on the last position
         if (p2_pos >= 99)
         {
             winner.player = 2;
-            winner.position = p2_pos;
+            winner.position = p2_pos - 1;
             return winner;
         }
     }
@@ -59,17 +71,17 @@ struct Winner getWinner(int p1[], int p2[], int m)
     if (p1_pos > p2_pos)
     {
         winner.player = 1;
-        winner.position = p1_pos;
+        winner.position = p1_pos - 1;
     }
     else if (p1_pos < p2_pos)
     {
         winner.player = 2;
-        winner.position = p2_pos;
+        winner.position = p2_pos - 1;
     }
     else
     {
         winner.player = 0;
-        winner.position = p1_pos;
+        winner.position = p1_pos - 1;
     }
     return winner;
 }
@@ -112,14 +124,16 @@ int main()
         if (snake[i].start < snake[i].end)
         {
             // update board with ladder
-            board[snake[i].start] = snake[i].end;
+            board[snake[i].start + 1] = snake[i].end + 1;
         }
         else
         {
             // update board with snake
-            board[snake[i].start] = -snake[i].end;
+            board[snake[i].start + 1] = -(snake[i].end + 1);
         }
     }
+
+    // display board in 10 *10
 
     struct Winner winner;
 
