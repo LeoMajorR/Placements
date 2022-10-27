@@ -1,4 +1,4 @@
-ResponseCode,Failure Type,ExceptionName,Description
+ResponseCode,Failure Type,Exception Class Name,Description
 00000000,SUCCESS,ULinkSuccessException,This response code is returned if the desired response is returned.
 59906002,System Error,ULinkInternalServerErrorException,This response code is returned if the system fails to execute a request.
 59906004,System Unavailable,ULinkApplicationException,This response code is returned if the system is not up.
@@ -105,5 +105,5 @@ ResponseCode,Failure Type,ExceptionName,Description
 59905004,Validation,ULinkTxnAdditionalFieldRequiredException,Transaction additional field required.
 50107001,Validation,ULinkRemitterPasswordResetRequiredException,Remitter Password Reset Required.
 59905001,Validation,ULinkNeedToUpdateAppException,Need to update the App.
-19906002,Validation,ULinkInvalidTokenException,Invalid Verification Token
-19906005,Validation,ULinkNoServiceException,Service Not available
+19906002,Validation,,Invalid Verification Token
+,Validation,,Service Not availables
