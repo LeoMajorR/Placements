@@ -1,0 +1,9 @@
+{
+    "debug.inlineValues": "on",
+    "files.associations": {
+        "stdexcept": "cpp",
+        "any": "cpp",
+        "optional": "cpp",
+        "variant": "cpp"
+    }
+}
