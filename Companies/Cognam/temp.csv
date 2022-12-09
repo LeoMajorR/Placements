@@ -1,0 +1,109 @@
+ResponseCode,Failure Type,Exception Class Name,Description
+00000000,SUCCESS,ULinkSuccessException,This response code is returned if the desired response is returned.
+59906002,System Error,ULinkInternalServerErrorException,This response code is returned if the system fails to execute a request.
+59906004,System Unavailable,ULinkApplicationException,This response code is returned if the system is not up.
+59906005,Network Problem,ULinkNetworkException,This response code is returned if a network problem comes.
+59907006,Validation,ULinkAuthFailureException,This response code is returned in case of authentication failure.
+50103003,Insufficient Data,ULinkInSuifficientDataException,This response code is returned if the request does not have all mandatory fields.
+59903001,Security,ULinkInvalidPartnerCodeException,This response code is returned if partner code in request is invalid.
+,Validation,,
+51102001,Validation,ULinkDuplicateTxnException,"This response code is returned, someone tries to send more than one transaction with the same information within a certain interval."
+,,," To avoid this situation, it is suggested to change either amount and/or beneficiary."
+51102002,.,ULinkTxnNotCreatedException,This response is returned if the system is not sure that the transaction is created in the system or not.
+,,," To make sure whether the transaction is created successfully or not, it is suggested to check the transaction summary."
+59902003,Validation,ULinkNoChangeRequiredException,This response code is returned if a change request is received but the information requested to change already exists in the system and no changes required.
+51108001,Validation,ULinkPaymentFailedException,This response code is returned if payment fails at the payment processor due to some reason.
+,,," For Example: Low balance, Payment Processor system error, authentication failure etc."
+51108002,Validation.,ULinkTxnAlreadyConfirmedException,This response code is returned if someone tries to confirm a transaction which is already created and confirmed.
+51108002,Validation,ULinkTxnAlreadyConfirmedException,This response code is returned if someone tries to confirm a transaction which is already created and confirmed.
+51104010,Validation,ULinkTxnNotPayableException,This response code is returned if someone tries to cancel a transaction which is not in payable status.
+50108004,Validation,ULinkSessionExpiredException,This response code is returned if the user's session is expired.
+50105002,Validation,ULinkUserPasswordMismatchException,This response code is returned if either user ID or password does not match.
+50107003,Validation,ULinkPasswordExpiredException,This response code is returned if the user's password has expired or the user has requested a temporary password and then logged in using temporary password.
+50105005,Validation,ULinkDeviceNotRegisteredException,This response code is returned if the device is not registered at the time of login.
+50107004,Validation,ULinkBlackListedException,This response code is returned if a user caught in black list check at the time of sign up.
+50107005,Validation,ULinkFraudException,This response code is returned if the user  is caught in a fraud check at the time of sign up.
+50104001,Validation,ULinkUserLockedOutException,This response code is returned if the user's Id is locked due to certain numbers of failed tries with the wrong password.
+50102001,Validation,ULinkEmailNotSentException,This response code is returned if request is processed and email is not sent due to some error while sending email.
+50102002,Validation,ULinkUserPendingException,This response code returned if user tries to login/sign up with user id already existing with pending status in the system
+50102003,Validation,ULinkUserAlreadyActiveException,This response code returns if the user tries to authenticate already active or provisional active user id.
+50102004,,ULinkUserProvisionalActiveException,This response code returns if provisional active tries to login. This is a warning and it should be considered a success.
+50102005,,ULinkUserInformationVerificationSuccessException,"This response code is returned if information verification questions are provided in response. This is a warning, it should be considered a success."
+50102006,,ULinkUserSecurityQuestionsRequiredException,This response code is returned if security questions are required.
+50102007,,ULinkUserProfileAlreadySetupException,This response code returned if profile is already setup.
+50102008,,ULinkUserSecurityQuestionValidException,The response to the security question is valid.
+50102009,,ULinkUserUICValidException,This response code is returned if the user gives the correct UIC.
+50102010,,ULinkUserUICSentSuccessException,The UniTeller identification code has been sent successfully.
+50104004,,ULinkUserPasswordNotMatchException,This response code returned if the password entered does not match with the registered password.
+50104008,,ULinkUserPasswordPreviouslyUsedException,"This response code is returned if a user tries to change password with previously used passwords (Number of used passwords is configurable at UniTeller side, currently it is 5)."
+50104009,,ULinkUserPasswordPatternNotMatchException,This response code returns if the password entered by the user doesn’t match the password pattern rule.
+50104010,,ULinkUserEmailPatternNotMatchException,This response code returns if the email address entered by the user doesn’t match the email address pattern rule.
+51102903,,ULinkRemitterVelocityCheckException,"This is a confirmation type warning. This response code is returned if the remitter's transaction is caught in a velocity check. If a user chooses to do a transaction, it will be created in HOLD status."
+51102904,Validation,,
+51104001,Validation,ULinkUserLimitExceededException,This response code returns if the user's Limit allowed to the user is exceeded.  More details can be explained in the response message.
+51104002,Validation,ULinkUserBankAccountNotVerifiedException,This response code returned if user tries to do transaction with unverified bank account.
+51104003,Validation,ULinkUserCreditCardNotVerifiedException,This response code is returned if the user tries to do a transaction with an unverified credit card.
+51104004,Validation,ULinkUserDebitCardNotVerifiedException,This response code is returned if the user tries to do a transaction with an unverified debit card.
+51104005,Validation,ULinkUserUlinkCardNotVerifiedException,This response code is returned if the user tries to do a transaction with an unverified Ulink card.
+51104006,Validation,ULinkUserBankAccountLimitExceededException,This response code is returned if the user's bank account transaction amount limit is exceeded.
+51104007,Validation,ULinkUserCreditCardLimitExceededException,This response code returned if the user's credit card transaction amount limit exceeded.
+51104008,Validation,ULinkUserDebitCardLimitExceededException,This response code returned if the user's debit card transaction amount limit exceeded.
+51104009,Validation,ULinkUserUlinkCardLimitExceededException,This response code returned if the user's Ulink card transaction amount limit exceeded.
+50105001,Validation,ULinkUserPasswordExpiredException,This response code is returned if the user tries to login with an expired Password.
+50103003,Validation,ULinkInSuifficientReqDataException,This response code is returned if the request does not have all mandatory fields.
+59903005,Validation,ULinkInvalidReqDataException,This response code is returned if the request does not have correct data.
+59903002,Validation,ULinkInvalidBeneIdException,This response code returned if the beneficiary id passed in request is not correct.
+59903003,Validation,ULinkInvalidSendingMethodException,This response code returns if the Sending method id/name/type passed in request is not correct.
+59908001,Validation,ULinkBankAccountAlreadyExistsException,This response code is returned if the user tries to add a bank account more than once and he/she has already this bank account in his/her sending method list with active status.
+59908002,Validation,ULinkBankAccountAlreadyAddedException,This response code is returned if the user tries to add a bank account more than once in the same day. No matter if the bank account is active or not.
+59908003,Validation,ULinkCreditCardNumberLimitExceededException,This response code is returned if the user is trying to add a credit card after reaching the maximum number of credit cards in his accounts (Allowed credit card number for one account is configurable).
+59908004,Validation,ULinkDebitCardNumberLimitExceededExceptio,This response code is returned if the user is trying to add a debit card after reaching the maximum number of debit cards in his accounts (Allowed debit card number for one account is configurable).
+59908005,Validation,ULinkSendingMethodNumberLimitExceededException,This response code is returned if the user is trying to add a sending method after reaching the maximum number of sending methods in his accounts (Allowed sending methods number for one account is configurable).
+59908013,Validation,ULinkBeneNumberLimitExceededException,This response code is returned if the user is trying to add beneficiaries after reaching the maximum number of beneficiaries in his accounts (Allowed beneficiaries number for one account is configurable).
+59908006,Validation,ULinkCreditCardAlreadyExistsException,This response code is returned if the user tries to add a credit card more than once and he/she has already this credit card in his/her sending method list with active status.
+59908007,Validation,ULinkDebitCardAlreadyExistsException,This response code is returned if the user tries to add a debit card more than once and he/she has already this debit card in his/her sending method list with active status.
+59908008,Validation,ULinkCreditCardAlreadyAddedException,This response code is returned if the user tries to add a credit card more than once in the same day. No matter if the credit card is active or not.
+59908009,Validation,ULinkDebitCardAlreadyAddedException,This response code is returned if the user tries to add a debit card more than once in the same day. No matter if the debit card is active or not.
+59908010,Validation,ULinkCVVNotMatchException,This response code returns if cvv does not match on the payment processor.
+59908011,Validation,ULinkAVSNotMatchException,This response code is returned if AVS (Address verification system) does not match the payment processor.
+59908012,Validation,ULinkUserBankAccountLockedException,This response code is returned if the user's bank account is locked.
+59908014,Validation,ULinkUserCreditCardLockedException,This response code is returned if the user's credit card is locked.
+59908019,Validation,ULinkUserDebitCardLockedException,This response code is returned if the user's debit card is locked.
+59908015,Validation,ULinkUserBankAccountNotAllowedException,This response code is returned if user's tries to verify a bank account which is not allowed.
+59908016,Validation,ULinkUserDebitCardNotAllowedException,This response code is returned if user's tries to verify a Debit card which is not allowed.
+59908017,Validation,ULinkUserCreditCardNotAllowedException,This response code is returned if user's tries to verify a credit card which is not allowed.
+50105003,Validation,ULinkUserNotActiveException,This response code is returned if the user's profile is not active/provisional active at the time of login.
+50105004,Validation,ULinkUserSuspendedOrLockedException,This response code returns if the user's profile is suspended or locked at the time of login.
+50107002,Validation,ULinkUserTempPasswordNeedToBeChangedException,This response code is returned if the user's temporary password needs to be changed.
+50107006,Validation,ULinkUserSecurityAnswerNotMatchException,This response code is returned if the user's provided security answer doesn't match.
+51103001,Validation,ULinkInvalidTxnNumberException,This response code is returned if the provided transaction number is invalid.
+59903006,Validation,ULinkInvalidCountryCodeException,This response code is returned if the provided country number is invalid.
+59903007,Validation,ULinkInvalidCurrencyException,This response code is returned if provided currency is invalid.
+59903008,Validation,ULinkInvalidPayerException,This response code is returned if the provided payer is invalid.
+51103002,Validation,ULinkInvalidTxnInternalReferenceException,This response code returned if provided transaction internal reference is invalid.
+59902004,Validation,ULinkSendingMethodAlreadyVerifiedException,This response code returns if it tries to verify an already verified sending method.
+51104011,Validation,ULinkCancellationNotAllowedException,This response code is returned if cancellation is not allowed for a particular time period.
+51102004,Validation,ULinkTxnAlreadyCancelledException,"This response code returned if tries to cancel, an already cancelled transaction"
+51102005,Validation,ULinkTxnCancellationPendingException,This response code is returned if a request has been received and sent to the partner bank. A notification of cancellation will be received later.
+51104012,Validation,ULinkTxnNotInPendingStatusException,This response code is returned if it tries to cancel and the transaction is in PAID or other status.
+51104013,Validation,ULinkTxnDoesNotExistException,"This response code is returned if tries to cancel, and Transaction does not exist"
+50107007,Validation,ULinkUserAlreadyExistsException,This response code is returned if someone tried to sign up with an already existing email address/user id.
+50108001,Validation,ULinkUserPersonalInfoNotCompletedException,This response code is returned if the user tries to verify his information without completing his/her personal info.
+50105007,Validation,ULinkUserOnlyOneWayToProvideDocumentsException,This response code is  returned if the user has only one way to provide documents to verify his information.
+50105008,Validation,ULinkPayerRequiresBranchInfoException,"This response code is returned, if the payer passed in request requires its branch information also."
+51107001,Validation,ULinkTxnInPaymentProcessingException,"This response code is returned, if a transaction exists in payment processing."
+59905001,Validation,ULinkApplicationMustBeUpdatedException,This response code returns when the application must be required to update.
+59902005,Validation,ULinkPinRequiredException,This response code is  returned when the uLink pin is required.
+59902901,Validation,ULinkApplicationMustBeUpdatedException,This response code is returned when the application is required to update.
+50202001,Validation,ULinkDocumentImageRequiredException,This response code returned when the document image required verifying your information verification.
+50201002,Validation,ULinkDocumentVerificationUnderReviewException,This response code is returned when document verification is under review.
+50205002,Validation,ULinkDocumentVerificationByUnitellerCustomerCareException,This response code returned when document verification would be done by UniTeller customer care.
+51107002,Validation,ULinkTxnCaughtInVelocityRulesException,This response code returned when the transaction caught in velocity rules.
+50107008,Validation,ULinkUserAlreadyLoginException,This response code returns if the user is already login with the same or other device and tries to login again.
+59905002,Validation,ULinkMFARequiredException,MFA required.
+59905003,Validation,ULinkBeneAdditionalFieldRequiredException,Beneficiary additional field required.
+59905004,Validation,ULinkTxnAdditionalFieldRequiredException,Transaction additional field required.
+50107001,Validation,ULinkRemitterPasswordResetRequiredException,Remitter Password Reset Required.
+59905001,Validation,ULinkNeedToUpdateAppException,Need to update the App.
+19906002,Validation,,Invalid Verification Token
+,Validation,,Service Not availables
