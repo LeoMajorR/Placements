@@ -3,18 +3,15 @@ using namespace std;
 
 bool increasingTriplet(vector<int> &nums)
 {
-    vector<int> dp(nums.size(), 1);
-    int ans = 1;
-    for (int i = 1; i < nums.size(); i++)
+    int c1=INT_MAX, c2=INT_MAX;
+    for(int i=0; i<nums.size(); i++)
     {
-        for (int j = 0; j < i; j++)
-        {
-            if (nums[i] > nums[j])
-            {
-                dp[i] = max(dp[i], dp[j] + 1);
-            }
-        }
-        ans = max(ans, dp[i]);
+        if(nums[i]<=c1)
+            c1=nums[i];
+        else if(nums[i]<=c2)
+            c2=nums[i];
+        else
+            return true;
     }
-    return ans >= 3;
+    return false;
 }
