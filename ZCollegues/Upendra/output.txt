@@ -1,0 +1,3 @@
+Balanced
+Balanced
+Not Balanced
