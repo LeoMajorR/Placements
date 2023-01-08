@@ -1,6 +1,15 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+template <typename T>
+std::ostream & operator << (std::ostream & os, const std::vector<T> & vec)
+{
+    for(auto elem : vec)
+    {
+        os<<elem<< " ";
+    }
+    return os;
+}
 
 // approach : dp
 //  d[i] = min(d[i], d[i - j * j] + 1)
@@ -15,6 +24,7 @@ int numSquares(int n)
             dp[i] = min(dp[i], dp[i - j * j] + 1);
         }
     }
+    cout<<dp<<endl;
     return dp[n];
 }
 
