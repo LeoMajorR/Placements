@@ -1,5 +1,8 @@
 import tkinter as tk
-from qrcode import QR
+import qrcode
+from qrcode.util import *
+from PIL import ImageTk, Image
+import reedsolo
 
 
 class App(tk.Tk):
@@ -65,10 +68,9 @@ class App(tk.Tk):
         message = self.message_entry.get()
 
         # Encode the message using Reed-Solomon coding
-        rs = qrcode.util.ReedSolomonEncoder()
+        rs = reedsolo.RSCodec(10)
         data = bytearray(message.encode('utf-8'))
-        rs.encode(data)
-        encoded_message = bytes(data).decode('utf-8')
+        encoded_message = rs.encode(data).hex()
 
         # Display the encoded message as a QR code
         qr = qrcode.QRCode(version=None,
@@ -78,7 +80,10 @@ class App(tk.Tk):
         qr.add_data(encoded_message)
         qr.make(fit=True)
         img = qr.make_image(fill_color="black", back_color="white")
-        img.show()
+        img_tk = ImageTk.PhotoImage(img)
+        qr_label = tk.Label(self, image=img_tk)
+        qr_label.image = img_tk
+        qr_label.pack(pady=10)
 
         # Update the result label to show the encoded message
         self.result_label.configure(
@@ -89,11 +94,32 @@ class App(tk.Tk):
         codeword = self.message_entry.get()
 
         # Decode the codeword using Reed-Solomon coding
-        qr = QR()
-        qr.decode(codeword)
-        decoded_message = qr.data
+        rs = reedsolo.RSCodec(10)
+        try:
+            data = rs.decode(bytes.fromhex(codeword))
+            decoded_message = data.decode('utf-8')
+            success = True
+        except reedsolo.ReedSolomonError:
+            decoded_message = "Error: Unable to decode message."
+            success = False
 
+        # Update the result
+        if success:
+            # Display the decoded message as a QR code
+            qr = qrcode.QRCode(
+                version=None,
+                error_correction=qrcode.constants.ERROR_CORRECT_L,
+                box_size=10,
+                border=4)
+            qr.add_data(decoded_message)
+            qr.make(fit=True)
+            img = qr.make_image(fill_color="black", back_color="white")
+            img_tk = ImageTk.PhotoImage(img)
+            qr_label = tk.Label(self, image=img_tk)
+            qr_label.image = img_tk
+            qr_label.pack(pady=10)
         # Update the result label to show the decoded message
+
         self.result_label.configure(
             text=f"The decoded message is: {decoded_message}")
 
